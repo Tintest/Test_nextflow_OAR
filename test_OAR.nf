@@ -43,7 +43,7 @@ if (params.fastq2bam == 0 && !params.help) {
 
 		'''
 		flowcell_lane_id=$(zcat !{reads} | head -n1 | cut -d ":" -f3,4  | tr ":" ".")
-		oarsub --project epimed -l /core=16,walltime=00:30:00 "bwa mem !{params.genomeRef} !{reads} -t !{task.cpus} -R '@RG\\tID:${flowcell_lane_id}\\tSM:!{sample_name}\\tLB:!{sample_name}\\tPL:ILLUMINA' -B 4 -O 6 -E 1 -M | samtools sort -@ !{task.cpus} -O BAM -l 9 -T tmp_sort - | samtools view -@ !{task.cpus} -h -b -o !{bam_name}.bam -"
+		bwa mem !{params.genomeRef} !{reads} -t !{task.cpus} -R '@RG\\tID:${flowcell_lane_id}\\tSM:!{sample_name}\\tLB:!{sample_name}\\tPL:ILLUMINA' -B 4 -O 6 -E 1 -M | samtools sort -@ !{task.cpus} -O BAM -l 9 -T tmp_sort - | samtools view -@ !{task.cpus} -h -b -o !{bam_name}.bam -
 		'''
 
 

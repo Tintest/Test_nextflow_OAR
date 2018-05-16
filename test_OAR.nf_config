@@ -1,8 +1,8 @@
-// process {
-//   executor='oar'
-//   queue='default'
-//   clusterOptions = '--project epimed -l /core=16,walltime=00:30:00'
-// }
+process {
+  executor='oar'
+  queue='default'
+  clusterOptions = '--project epimed -l /core=16,walltime=00:30:00'
+}
 
  ///////////////////////////////////////////////////////////////////////
  ////////////////////////// MAJOR PARAMETERS ///////////////////////////
