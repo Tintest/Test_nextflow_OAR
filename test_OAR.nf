@@ -19,11 +19,9 @@ if (params.fastq2bam == 0 && !params.help) {
 
 
  process fastq2sortedbam {
-	 	errorStrategy 'ignore'
+	 	errorStrategy 'finish'
 		echo true
 
-		maxForks params.maxJob
-		cpus params.nCpu
 
 		input:
 		set pair_id, file(reads) from fastq_pairs_ch
@@ -42,7 +40,7 @@ if (params.fastq2bam == 0 && !params.help) {
 		log.info ""
 
 		'''
-		bwa mem !{params.genomeRef} !{reads} -t !{task.cpus} -B 4 -O 6 -E 1 -M | samtools sort -@ !{task.cpus} -O BAM -l 9 -T tmp_sort - | samtools view -@ !{task.cpus} -h -b -o !{bam_name}.bam -
+		bwa mem !{params.genomeRef} !{reads} -B 4 -O 6 -E 1 -M | samtools sort -O BAM -l 9 -T tmp_sort - | samtools view -h -b -o !{bam_name}.bam -
 		'''
 
 
