@@ -27,7 +27,7 @@ process {
  params.resultDir= "${params.sampleDir}/${params.sampleID}"
  params.refDir= "${params.projectDir}/REF"
  params.resultDir= "${params.sampleDir}/${params.sampleID}"
- params.binDir= "${rootDir}"/bin
+ params.binDir= "${rootDir}/bin"
 
  params.genomeRef= "${params.refDir}/${params.genomeID}"
  params.targetBed= "${params.refDir}/ncbi_gencode_ucsc.merged20.bed"
