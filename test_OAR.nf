@@ -40,7 +40,7 @@ if (params.fastq2bam == 0 && !params.help) {
 		log.info ""
 
 		'''
-		bwa mem !{params.genomeRef} !{reads} -B 4 -O 6 -E 1 -M | samtools sort -O BAM -l 9 -T tmp_sort - | samtools view -h -b -o !{bam_name}.bam -
+		!{params.binDir}/bwa mem !{params.genomeRef} !{reads} -B 4 -O 6 -E 1 -M | !{params.binDir}/samtools sort -O BAM -l 9 -T tmp_sort - | !{params.binDir}/samtools view -h -b -o !{bam_name}.bam -
 		'''
 
 
